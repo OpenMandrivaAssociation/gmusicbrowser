@@ -1,7 +1,7 @@
 %define name	gmusicbrowser
 %define version	0.9550
 %define shortversion 0.955
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 	 	%{name}
 Summary: 	Jukebox for collections of music files
@@ -25,6 +25,7 @@ BuildArch:	noarch
 
 Requires(post): desktop-file-utils 
 Requires(postun): desktop-file-utils
+%define	_requires_exceptions	perl\(simple_http\)
 
 %description
 An open-source jukebox for large collections of mp3/ogg/flac files.
@@ -63,26 +64,23 @@ An open-source jukebox for large collections of mp3/ogg/flac files.
 %setup -qn %{name}-%{shortversion}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 make install prefix=%{buildroot}%{_prefix}
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
+mkdir -p %{buildroot}%{_menudir}
+cat << EOF > %{buildroot}%{_menudir}/%{name}
 ?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="GMusicBrowser" longtitle="Music Collection Jukebox" section="Multimedia/Sound" xdg="true"
 EOF
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Multimedia-Sound;AudioVideo;Audio;Player" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 rm -rf %{buildroot}%{datadir}/doc/%{name}-%{shortversion}
 
-%find_lang %name
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%find_lang %{name}
 
 %post
 %{update_desktop_database}
@@ -90,14 +88,17 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %{clean_desktop_database}
 
+%clean
+rm -rf %{buildroot}
+
 %files -f %{name}.lang
 %defattr(-,root,root)
-%{_datadir}/doc/*
-%{_bindir}/%name
-%{_datadir}/%name
+%{_docdir}/*
+%{_bindir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_mandir}/man1/*
-%{_menudir}/%name
-%{_liconsdir}/%name.png
-%{_iconsdir}/%name.png
-%{_miconsdir}/%name.png
+%{_menudir}/%{name}
+%{_miconsdir}/%{name}.png
+%{_iconsdir}/%{name}.png
+%{_liconsdir}/%{name}.png
