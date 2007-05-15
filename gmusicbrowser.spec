@@ -12,8 +12,8 @@ Source:		http://squentin.free.fr/gmusicbrowser/%{name}-%{shortversion}.tar.bz2
 URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
 License:	GPL
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	ImageMagick
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	ImageMagick desktop-file-install
 Requires:	perl-Gtk2 >= 1.090
 Requires:	perl-GStreamer >= 0.06
 Requires:	gstreamer0.10-plugins-good
