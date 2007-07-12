@@ -1,7 +1,7 @@
 %define name	gmusicbrowser
-%define version	0.9550
-%define shortversion 0.955
-%define release %mkrel 2
+%define version	0.960
+%define shortversion 0.960
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Jukebox for collections of music files
@@ -67,12 +67,6 @@ An open-source jukebox for large collections of mp3/ogg/flac files.
 rm -rf %{buildroot}
 make install prefix=%{buildroot}%{_prefix}
 
-#menu
-mkdir -p %{buildroot}%{_menudir}
-cat << EOF > %{buildroot}%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="GMusicBrowser" longtitle="Music Collection Jukebox" section="Multimedia/Sound" xdg="true"
-EOF
-
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Multimedia-Sound;AudioVideo;Audio;Player" \
@@ -98,7 +92,6 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_mandir}/man1/*
-%{_menudir}/%{name}
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
