@@ -73,6 +73,7 @@ desktop-file-install --vendor="" \
   --dir %{buildroot}%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 rm -rf %{buildroot}%{datadir}/doc/%{name}-%{shortversion}
+rm -rf %{buildroot}/%{_menudir}
 
 %find_lang %{name}
 
