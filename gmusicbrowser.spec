@@ -1,5 +1,5 @@
 %define name	gmusicbrowser
-%define version	0.960
+%define version	0.9600
 %define shortversion 0.960
 %define release %mkrel 1
 
