@@ -7,6 +7,7 @@ Name: 	 	%{name}
 Summary: 	Jukebox for collections of music files
 Version: 	%{version}
 Release: 	%{release}
+Epoch:          1
 
 Source:		http://squentin.free.fr/gmusicbrowser/%{name}-%{shortversion}.tar.bz2
 URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
