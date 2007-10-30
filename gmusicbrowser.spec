@@ -1,6 +1,6 @@
 %define name	gmusicbrowser
-%define version	0.9600
-%define shortversion 0.960
+%define version	0.962
+%define shortversion 0.962
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -23,7 +23,7 @@ Requires:	perl-Gtk2-TrayIcon
 Requires:	perl-Gtk2-MozEmbed
 BuildArch:	noarch
 
-Requires(post): desktop-file-utils 
+Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 %define	_requires_exceptions	perl\(simple_http\)
 
@@ -79,7 +79,7 @@ rm -rf %{buildroot}/%{_menudir}
 
 %post
 %{update_desktop_database}
-		
+
 %postun
 %{clean_desktop_database}
 
