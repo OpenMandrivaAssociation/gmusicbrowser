@@ -1,7 +1,7 @@
 %define name	gmusicbrowser
 %define version	0.962
 %define shortversion 0.962
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 	 	%{name}
 Summary: 	Jukebox for collections of music files
