@@ -1,7 +1,7 @@
 %define name	gmusicbrowser
-%define version	0.962
-%define shortversion 0.962
-%define release %mkrel 2
+%define version	0.963
+%define shortversion %version
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Jukebox for collections of music files
@@ -9,7 +9,7 @@ Version: 	%{version}
 Release: 	%{release}
 Epoch:          1
 
-Source:		http://squentin.free.fr/gmusicbrowser/%{name}-%{shortversion}.tar.bz2
+Source:		http://squentin.free.fr/gmusicbrowser/%{name}-%{shortversion}.tar.gz
 URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
 License:	GPL
 Group:		Sound
@@ -69,8 +69,7 @@ rm -rf %{buildroot}
 make install prefix=%{buildroot}%{_prefix}
 
 desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Multimedia-Sound;AudioVideo;Audio;Player" \
+  --add-category="GTK;Player" \
   --dir %{buildroot}%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 rm -rf %{buildroot}%{datadir}/doc/%{name}-%{shortversion}
