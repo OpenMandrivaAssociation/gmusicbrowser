@@ -1,5 +1,5 @@
 %define name	gmusicbrowser
-%define version	0.963
+%define version	0.964
 %define shortversion %version
 %define release %mkrel 1
 
@@ -11,7 +11,7 @@ Epoch:          1
 
 Source:		http://squentin.free.fr/gmusicbrowser/%{name}-%{shortversion}.tar.gz
 URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
-License:	GPL
+License:	GPLv3+
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	ImageMagick desktop-file-utils
