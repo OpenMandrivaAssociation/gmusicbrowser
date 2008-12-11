@@ -14,7 +14,7 @@ URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
 License:	GPLv3+
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	ImageMagick desktop-file-utils
+BuildRequires:	imagemagick desktop-file-utils
 Requires:	perl-Gtk2 >= 1.090
 Requires:	perl-GStreamer >= 0.06
 Requires:	gstreamer0.10-plugins-good
