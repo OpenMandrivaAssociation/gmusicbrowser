@@ -1,20 +1,16 @@
-%define name	gmusicbrowser
-%define version	1.0.1
-%define shortversion %version
-%define release %mkrel 1
+%define	_requires_exceptions	perl\(simple_http\)
 
-Name: 	 	%{name}
 Summary: 	Jukebox for collections of music files
-Version: 	%{version}
-Release: 	%{release}
-Epoch:          1
-
-Source:		http://squentin.free.fr/gmusicbrowser/%{name}-%{shortversion}.tar.gz
-URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
+Name:		gmusicbrowser
+Version:	1.0.1
+Release:	%mkrel 2
+Epoch:		1
 License:	GPLv3+
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	imagemagick desktop-file-utils
+URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
+Source0:	http://squentin.free.fr/gmusicbrowser/%{name}-%{version}.tar.gz
+BuildRequires:	imagemagick
+BuildRequires:	desktop-file-utils
 Requires:	perl-Gtk2 >= 1.090
 Requires:	perl-GStreamer >= 0.06
 Requires:	gstreamer0.10-plugins-good
@@ -22,11 +18,12 @@ Requires:	gstreamer0.10-plugins-ugly
 Requires:	gstreamer0.10-flac
 Requires:	perl-Gtk2-TrayIcon
 Requires:	perl-Gtk2-MozEmbed
+Requires:	perl(GStreamer::Interfaces)
+Requires:	perl(Net::DBus)
 BuildArch:	noarch
-
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
-%define	_requires_exceptions	perl\(simple_http\)
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 An open-source jukebox for large collections of mp3/ogg/flac files.
@@ -62,26 +59,28 @@ An open-source jukebox for large collections of mp3/ogg/flac files.
             and search lyrics with google
 
 %prep
-%setup -qn %{name}-%{shortversion}
+%setup -q
 
 %install
 rm -rf %{buildroot}
-make install prefix=%{buildroot}%{_prefix}
+%makeinstall_std
 
-desktop-file-install --vendor="" \
+desktop-file-install \
   --add-category="GTK;Player" \
-  --dir %{buildroot}%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
+  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
 rm -rf %{buildroot}%{datadir}/doc/%{name}-%{shortversion}
 rm -rf %{buildroot}/%{_menudir}
 
 %find_lang %{name}
 
+%if %mdkversion < 200900
 %post
 %{update_desktop_database}
 
 %postun
 %{clean_desktop_database}
+%endif
 
 %clean
 rm -rf %{buildroot}
