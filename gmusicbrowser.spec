@@ -2,8 +2,8 @@
 
 Summary: 	Jukebox for collections of music files
 Name:		gmusicbrowser
-Version:	1.0.1
-Release:	%mkrel 2
+Version:	1.0.2
+Release:	%mkrel 1
 Epoch:		1
 License:	GPLv3+
 Group:		Sound
