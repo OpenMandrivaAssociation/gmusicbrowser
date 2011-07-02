@@ -2,13 +2,13 @@
 
 Summary: 	Jukebox for collections of music files
 Name:		gmusicbrowser
-Version:	1.0.2
-Release:	%mkrel 2
+Version:	1.1.7
+Release:	%mkrel 1
 Epoch:		1
 License:	GPLv3+
 Group:		Sound
-URL:		http://squentin.free.fr/gmusicbrowser/gmusicbrowser.html
-Source0:	http://squentin.free.fr/gmusicbrowser/%{name}-%{version}.tar.gz
+URL:		http://gmusicbrowser.org
+Source0:	http://gmusicbrowser.org/download/%{name}-%{version}.tar.gz
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 Requires:	perl-Gtk2 >= 1.090
@@ -23,7 +23,6 @@ Requires:	perl(Net::DBus)
 BuildArch:	noarch
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 An open-source jukebox for large collections of mp3/ogg/flac files.
@@ -69,25 +68,17 @@ desktop-file-install \
   --add-category="GTK;Player" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
 
-rm -rf %{buildroot}%{datadir}/doc/%{name}-%{shortversion}
-rm -rf %{buildroot}/%{_menudir}
+rm -rf %{buildroot}%{_docdir}/%{name}-%{version}
+rm -rf %{buildroot}%{_menudir}
 
 %find_lang %{name}
-
-%if %mdkversion < 200900
-%post
-%{update_desktop_database}
-
-%postun
-%{clean_desktop_database}
-%endif
 
 %clean
 rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%{_docdir}/*
+%doc AUTHORS README NEWS layout_doc.html
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
