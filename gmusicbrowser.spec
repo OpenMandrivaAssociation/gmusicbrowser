@@ -53,3 +53,4 @@ rm -rf %{buildroot}%{_menudir}
 %{_datadir}/applications/*.desktop
 %{_mandir}/man1/*
 %{_iconsdir}//hicolor/*/apps/gmusicbrowser.*
+%{_datadir}/appdata/gmusicbrowser.appdata.xml
