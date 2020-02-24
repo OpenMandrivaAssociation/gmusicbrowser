@@ -35,7 +35,7 @@ files, written in perl.
 %setup -q
 
 %install
-%makeinstall_std
+%make_install
 
 desktop-file-install \
   --add-category="GTK;Player" \
@@ -52,7 +52,3 @@ rm -rf %{buildroot}%{_menudir}
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_mandir}/man1/*
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
-
