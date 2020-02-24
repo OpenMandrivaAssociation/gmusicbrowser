@@ -4,8 +4,8 @@
 
 Summary:	Jukebox for collections of music files
 Name:		gmusicbrowser
-Version:	1.1.9
-Release:	2
+Version:	1.1.15
+Release:	1
 Epoch:		1
 License:	GPLv3+
 Group:		Sound
