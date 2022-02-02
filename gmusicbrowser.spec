@@ -4,7 +4,7 @@
 
 Summary:	Jukebox for collections of music files
 Name:		gmusicbrowser
-Version:	1.1.15
+Version:	1.1.16
 Release:	1
 Epoch:		1
 License:	GPLv3+
@@ -31,8 +31,19 @@ BuildArch:	noarch
 An open-source jukebox for large collections of mp3/ogg/flac/mpc/ape
 files, written in perl.
 
+%files -f %{name}.lang
+%doc AUTHORS README NEWS layout_doc.html
+%{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_datadir}/applications/*.desktop
+%{_mandir}/man1/*
+%{_iconsdir}//hicolor/*/apps/gmusicbrowser.*
+%{_metainfodir}/org.gmusicbrowser.metainfo.xml
+
+#---------------------------------------------------------------------------
+
 %prep
-%setup -q
+%autosetup -p1
 
 %install
 %make_install
@@ -45,12 +56,3 @@ rm -rf %{buildroot}%{_docdir}/%{name}-%{version}
 rm -rf %{buildroot}%{_menudir}
 
 %find_lang %{name}
-
-%files -f %{name}.lang
-%doc AUTHORS README NEWS layout_doc.html
-%{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/*.desktop
-%{_mandir}/man1/*
-%{_iconsdir}//hicolor/*/apps/gmusicbrowser.*
-%{_datadir}/appdata/gmusicbrowser.appdata.xml
