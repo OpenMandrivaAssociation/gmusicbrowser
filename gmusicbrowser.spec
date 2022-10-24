@@ -5,12 +5,11 @@
 Summary:	Jukebox for collections of music files
 Name:		gmusicbrowser
 Version:	1.1.16
-Release:	1
-Epoch:		1
+Release:	2
 License:	GPLv3+
 Group:		Sound
-URL:		http://gmusicbrowser.org
-Source0:	http://gmusicbrowser.org/download/%{name}-%{version}.tar.gz
+URL:		https://gmusicbrowser.org
+Source0:	https://gmusicbrowser.org/download/%{name}-%{version}.tar.gz
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 Requires:	perl-Gtk2 >= 1.090
